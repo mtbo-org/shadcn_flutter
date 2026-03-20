@@ -711,7 +711,7 @@ class _MenuButtonState extends State<MenuButton> {
                                     menuData.popoverController.hasOpenPopover ||
                                             hasFocus
                                         ? theme.colorScheme.accent
-                                        : null,
+                                        : theme.colorScheme.popover,
                                 borderRadius:
                                     BorderRadius.circular(theme.radiusMd),
                               );
