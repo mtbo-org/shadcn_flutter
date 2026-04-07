@@ -403,7 +403,7 @@ class _MultipleChoiceState<T> extends State<MultipleChoice<T>>
     if (widget.enabled == false) {
       return;
     }
-    if (widget.value != null && widget.value != item) {
+    if (widget.value != null && widget.value == item) {
       return;
     }
     if (widget.onChanged != null) {
