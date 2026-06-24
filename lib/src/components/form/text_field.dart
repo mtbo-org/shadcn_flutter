@@ -863,6 +863,18 @@ abstract class InputFeatureState<T extends InputFeature> {
     assert(attached, 'Feature not attached');
     _inputState!._setStateFeature(fn);
   }
+
+  /// Changes the text of the attached text field.
+  ///
+  /// Parameters:
+  /// - [value] (`String`, required): The new text value.
+  /// - [submit] (`bool`, optional): Whether to submit the form after changing the text.
+  ///
+  /// Throws: AssertionError if feature is not attached.
+  void changeText(String value, {bool submit = false}) {
+    assert(attached, 'Feature not attached');
+    _inputState!.changeText(value, submit: submit);
+  }
 }
 
 class _TextFieldSelectionGestureDetectorBuilder
@@ -2158,10 +2170,7 @@ class TextFieldState extends State<TextField>
   }
 
   void _handleControllerChanged() {
-    _effectiveText.value = effectiveController.text;
-    _effectiveSelection.value = effectiveController.selection;
-    formValue =
-        effectiveController.text.isEmpty ? null : effectiveController.text;
+    _onChanged(effectiveController.text);
   }
 
   void _createLocalController([TextEditingValue? value]) {
@@ -2521,6 +2530,17 @@ class TextFieldState extends State<TextField>
 
     for (final attached in _attachedFeatures) {
       attached.state.onTextChanged(value);
+    }
+  }
+
+  /// Changes the text of the text field.
+  ///
+  /// [value] The new text for the text field.
+  /// [submit] Whether to submit the text field after changing the text.
+  void changeText(String value, {bool submit = false}) {
+    effectiveController.text = value;
+    if (submit) {
+      widget.onSubmitted?.call(value);
     }
   }
 
