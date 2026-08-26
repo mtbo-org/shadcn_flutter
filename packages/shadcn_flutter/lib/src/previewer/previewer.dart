@@ -28,7 +28,7 @@ final class ShadcnPreview extends Preview {
   /// Returns:
   /// A [PreviewThemeData] instance.
   static PreviewThemeData themeBuilder() {
-    return PreviewThemeData();
+    return MultiPreviewThemeData([]);
   }
 
   @override
