@@ -38,9 +38,7 @@ final class ShadcnPreview extends Preview {
     builder.wrapper = (child) {
       return ShadcnLayer(
         theme: brightness == Brightness.dark
-            ? ThemeData.dark(
-                colorScheme: colorScheme ?? ColorSchemes.darkSlate,
-              )
+            ? ThemeData.dark(colorScheme: colorScheme ?? ColorSchemes.darkSlate)
             : ThemeData(colorScheme: colorScheme ?? ColorSchemes.lightSlate),
         child: original.wrapper?.call(child) ?? child,
       );
@@ -117,23 +115,23 @@ final class ShadcnMultiPreview extends MultiPreview {
 
   @override
   List<Preview> get previews => [
-        ShadcnPreview(
-          name: name == null ? 'Light' : 'Light - $name',
-          group: group == null ? 'Brightness' : 'Brightness - $group',
-          size: size,
-          textScaleFactor: textScaleFactor,
-          wrapper: wrapper,
-          brightness: brightness,
-          localizations: localizations,
-        ),
-        ShadcnPreview(
-          name: name == null ? 'Dark' : 'Dark - $name',
-          group: group == null ? 'Brightness' : 'Brightness - $group',
-          size: size,
-          textScaleFactor: textScaleFactor,
-          wrapper: wrapper,
-          brightness: brightness,
-          localizations: localizations,
-        ),
-      ];
+    ShadcnPreview(
+      name: name == null ? 'Light' : 'Light - $name',
+      group: group == null ? 'Brightness' : 'Brightness - $group',
+      size: size,
+      textScaleFactor: textScaleFactor,
+      wrapper: wrapper,
+      brightness: brightness,
+      localizations: localizations,
+    ),
+    ShadcnPreview(
+      name: name == null ? 'Dark' : 'Dark - $name',
+      group: group == null ? 'Brightness' : 'Brightness - $group',
+      size: size,
+      textScaleFactor: textScaleFactor,
+      wrapper: wrapper,
+      brightness: brightness,
+      localizations: localizations,
+    ),
+  ];
 }
